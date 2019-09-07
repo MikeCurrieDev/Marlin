@@ -279,7 +279,7 @@
  */
 //#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1           // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN P1_28           // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 60             // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255           // 255 == full speed
   //#define CONTROLLERFAN_SPEED_Z_ONLY 127  // Reduce noise on machines that keep Z enabled
@@ -1074,7 +1074,7 @@
      *
      * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
      */
-    //#define SDCARD_CONNECTION LCD
+    #define SDCARD_CONNECTION LCD
   #endif
 
 #endif // SDSUPPORT
@@ -1390,7 +1390,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_PULSE 2
+#define MINIMUM_STEPPER_PULSE 0
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -1727,8 +1727,8 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_MICROSTEPS   16  // 0..256
+    #define X_CURRENT     600  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_MICROSTEPS   256  // 0..256
     #define X_RSENSE     0.11
     #define X_CHAIN_POS     0  // 0 - Not chained, 1 - MCU MOSI connected, 2 - next in chain, ...
   #endif
@@ -1741,8 +1741,8 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     800
-    #define Y_MICROSTEPS   16
+    #define Y_CURRENT     600
+    #define Y_MICROSTEPS   256
     #define Y_RSENSE     0.11
     #define Y_CHAIN_POS     0
   #endif
@@ -1756,14 +1756,14 @@
 
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT     800
-    #define Z_MICROSTEPS   16
+    #define Z_MICROSTEPS   32
     #define Z_RSENSE     0.11
     #define Z_CHAIN_POS     0
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT    800
-    #define Z2_MICROSTEPS  16
+    #define Z2_CURRENT    600
+    #define Z2_MICROSTEPS  32
     #define Z2_RSENSE    0.11
     #define Z2_CHAIN_POS    0
   #endif
@@ -1776,7 +1776,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    800
+    #define E0_CURRENT    500
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
     #define E0_CHAIN_POS    0
@@ -1886,7 +1886,7 @@
    */
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
-  #define STEALTHCHOP_E
+  //#define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -1902,7 +1902,7 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
 
   /**
    * Monitor Trinamic drivers for error conditions,
@@ -1915,7 +1915,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -1930,16 +1930,16 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
+  #define X_HYBRID_THRESHOLD     150  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
+  #define Y_HYBRID_THRESHOLD     150
   #define Y2_HYBRID_THRESHOLD    100
   #define Z_HYBRID_THRESHOLD       3
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
-  #define E0_HYBRID_THRESHOLD     30
+  #define E0_HYBRID_THRESHOLD     10
   #define E1_HYBRID_THRESHOLD     30
   #define E2_HYBRID_THRESHOLD     30
   #define E3_HYBRID_THRESHOLD     30
@@ -1999,7 +1999,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * You can set your own advanced settings by filling in predefined functions.
