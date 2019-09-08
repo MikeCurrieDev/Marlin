@@ -1727,7 +1727,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     600  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   256  // 0..256
     #define X_RSENSE     0.11
     #define X_CHAIN_POS     0  // 0 - Not chained, 1 - MCU MOSI connected, 2 - next in chain, ...
@@ -1741,7 +1741,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     600
+    #define Y_CURRENT     800
     #define Y_MICROSTEPS   256
     #define Y_RSENSE     0.11
     #define Y_CHAIN_POS     0
@@ -1932,11 +1932,11 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     150  // [mm/s]
+  #define X_HYBRID_THRESHOLD     175  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     150
+  #define Y_HYBRID_THRESHOLD     175
   #define Y2_HYBRID_THRESHOLD    100
-  #define Z_HYBRID_THRESHOLD       3
+  #define Z_HYBRID_THRESHOLD       5
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
   #define E0_HYBRID_THRESHOLD     10
